@@ -1,0 +1,23 @@
+﻿@model testapp.Models.TestViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+
+    @Model.Name
+    @Model.Count
+    <p>The Sum is @Model.Sum</p>
+    
+    @{ var abc = "abc";}
+    @abc
+</div>
+    
+<style>
+    .row{
+        padding-top : 30px;
+    }
+</style>
+
+ 
