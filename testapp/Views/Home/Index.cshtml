@@ -7,17 +7,37 @@
 <div class="row">
 
     @Model.Name
+    @Model.Last
     @Model.Count
     <p>The Sum is @Model.Sum</p>
-    
-    @{ var abc = "abc";}
+
+    @{ var abc = "This is a Microfrontend Demo";}
     @abc
+
+    @*@Html.Hidden("firstName", @Model.Name);*@
+
+
+    <div>
+        <div>
+            <app-1-root></app-1-root>
+        </div>
+        <div>
+            <app-2-root></app-2-root>
+        </div>
+
+    </div>
 </div>
+
+<script type="text/javascript">
+    window.appContext = {
+        userName: '@Model.Name @Model.Last',
+        firstName: '@Model.Name',
+        lastname: '@Model.Last',
+    };
+</script>
     
 <style>
-    .row{
-        padding-top : 30px;
+    .row {
+        padding-top: 30px;
     }
 </style>
-
- 

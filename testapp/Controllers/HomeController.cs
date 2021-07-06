@@ -11,7 +11,7 @@ namespace testapp.Controllers
     {
         public ActionResult Index()
         {
-            var model = new TestViewModel { Count = 1, Name = "RazorDemo",Sum=1+1 };
+            var model = new TestViewModel { Count = 1, Name = "Tehreen", Last = "Rahman", Sum=1+1 };
             return View(model);
         }
 

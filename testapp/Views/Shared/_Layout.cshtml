@@ -6,6 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Angular")
+    @Styles.Render("~/Content/Angular2")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -15,7 +18,7 @@
                 @Html.ActionLink("Angular", "Index", "AngularData")
                 @Html.ActionLink("Angular2", "Index", "AngularData2")
             </div>
-           
+
         </div>
     </div>
     <div class="container body-content">
@@ -28,6 +31,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Angular2")
+    @Scripts.Render("~/bundles/Angular")
     @RenderSection("scripts", required: false)
 </body>
 </html>
