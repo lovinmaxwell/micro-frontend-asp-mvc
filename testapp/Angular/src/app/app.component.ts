@@ -11,12 +11,14 @@ export class AppComponent implements OnInit{
   last: string;
   // @Input() last: string = '';
   title = 'Angular';
-  name:string = '';
+  name: string;
   // username: string = this.elementRef.nativeElement.getAttribute('username');
+  comment: string;
+  Status: string;
   constructor(private appContext: AppContextService) {
   }
 
-  ngOnInit(){
+  ngOnInit(): void{
     // alert('hi - ' + this.appContext.userName);
     console.log('hi - ' + this.appContext.userName);
 
@@ -24,5 +26,12 @@ export class AppComponent implements OnInit{
     this.last = this.appContext.lastname;
   }
 
-    
+
+  onInput($event: Event): void {
+    console.log('On Input Comment');
+    console.log($event);
+    console.log('appContext');
+    this.appContext.appContextBootstrap.comment =  $event.toString();
+    console.log(this.appContext);
+  }
 }

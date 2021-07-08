@@ -22,17 +22,17 @@ export class AppContextService {
 
   private dataSubject = new ReplaySubject<GlobalConstants>();
   AppContext$: Observable<GlobalConstants> = this.dataSubject.asObservable();
-
+  appContextBootstrap: GlobalConstants = ((window as any).appContext as GlobalConstants);
   constructor() {
+      console.log('App 2');
       console.log(window);
-      const appContextBootstrap: GlobalConstants = ((window as any).appContext as GlobalConstants);
-      console.log(appContextBootstrap);
-      console.table(appContextBootstrap);
-      this.userName = appContextBootstrap.userName;
-      this.firstName = appContextBootstrap.firstName;
-      this.lastname = appContextBootstrap.lastname;
-      this.Status = appContextBootstrap?.Status;
-      this.comment = appContextBootstrap?.comment;
+      console.log(this.appContextBootstrap);
+      console.table(this.appContextBootstrap);
+      this.userName = this.appContextBootstrap.userName;
+      this.firstName = this.appContextBootstrap.firstName;
+      this.lastname = this.appContextBootstrap.lastname;
+      this.Status = this.appContextBootstrap?.Status;
+      this.comment = this.appContextBootstrap?.comment;
   }
 }
 

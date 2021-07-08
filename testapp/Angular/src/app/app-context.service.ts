@@ -5,6 +5,7 @@ interface IAppContext {
   userName: string;
   firstName: string;
   lastname: string;
+  comment: string;
   isAdmin: boolean;
 }
 
@@ -16,22 +17,32 @@ export class AppContextService {
   userName: string;
   firstName: string;
   lastname: string;
+  comment: string;
+  Status: any;
 
   private dataSubject = new ReplaySubject<GlobalConstants>();
-  
+  AppContext$: Observable<GlobalConstants> = this.dataSubject.asObservable();
+  appContextBootstrap: GlobalConstants = ((window as any).appContext as GlobalConstants);
   constructor() {
-      var appContextBootstrap: IAppContext = (<IAppContext>(<any>window).appContext);
-      this.userName = appContextBootstrap.userName;
-      this.firstName = appContextBootstrap.firstName;
-      this.lastname = appContextBootstrap.lastname;
+      console.log('App 1');
+      console.log(window);
+
+      console.log(this.appContextBootstrap);
+      console.table(this.appContextBootstrap);
+      this.userName = this.appContextBootstrap.userName;
+      this.firstName = this.appContextBootstrap.firstName;
+      this.lastname = this.appContextBootstrap.lastname;
+      this.Status = this.appContextBootstrap?.Status;
+      this.comment = this.appContextBootstrap?.comment;
   }
 }
 
 
 export class GlobalConstants implements IAppContext{
-  Status:number[];
+  Status: any;
   userName: string;
   firstName: string;
   lastname: string;
+  comment: string;
   isAdmin: boolean;
 }

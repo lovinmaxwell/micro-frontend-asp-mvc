@@ -8,14 +8,13 @@ import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    App1Component
+    AppComponent
   ],
     imports: [
         BrowserModule,
         FormsModule
     ],
   providers: [AppContextService],
-  bootstrap: [AppComponent,App1Component]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

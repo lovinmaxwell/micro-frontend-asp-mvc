@@ -2,11 +2,11 @@
 
 <form action="submit">
   <label>First Name : {{firstName}}</label>
-  <input [(ngModel)]="firstName">
   <br/>
   <label>Last Name : {{last}}</label>
-  <input [(ngModel)]="last">
   <br/>
-  <label>Contact  :</label>
-  <input >
+  <label>Comment  :</label>
+  <input [(ngModel)]="comment" (ngModelChange)="onInput($event)" >
+  <br/>
+  <span>{{ Status }}</span>
 </form>
