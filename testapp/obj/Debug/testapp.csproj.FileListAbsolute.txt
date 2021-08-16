@@ -248,8 +248,8 @@ C:\Project\testapp\testapp\bin\System.Net.Http.Formatting.xml
 C:\Project\testapp\testapp\bin\System.Web.Http.xml
 C:\Project\testapp\testapp\bin\System.Web.Http.WebHost.xml
 C:\Project\testapp\testapp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Project\testapp\testapp\obj\Debug\testapp.csprojAssemblyReference.cache
 C:\Project\testapp\testapp\obj\Debug\testapp.csproj.CoreCompileInputs.cache
 C:\Project\testapp\testapp\obj\Debug\testapp.csproj.CopyComplete
 C:\Project\testapp\testapp\obj\Debug\testapp.dll
 C:\Project\testapp\testapp\obj\Debug\testapp.pdb
+C:\Project\testapp\testapp\obj\Debug\testapp.csproj.AssemblyReference.cache

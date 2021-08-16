@@ -6,7 +6,20 @@
   <label>Last Name : {{last}}</label>
   <br/>
   <label>Comment  :</label>
-  <input [(ngModel)]="comment" (ngModelChange)="onInput($event)" >
+  <input [(ngModel)]="comment" [ngModelOptions]="{standalone: true}" (ngModelChange)="onInput($event)" >
   <br/>
   <span>{{ Status }}</span>
 </form>
+
+<div class="card mb-3">
+  <h4 class="card-header">Component Communication</h4>
+  <div class="card-body">
+      <button (click)="sendMessage()" class="btn btn-primary mr-2">Send Message</button>
+      <button (click)="clearMessages()" class="btn btn-secondary">Clear Messages</button>
+  </div>
+</div>
+
+
+<div class="container text-center my-3">
+  <div *ngFor="let message of messages" class="alert alert-sm alert-info">{{message.text}}</div>
+</div>

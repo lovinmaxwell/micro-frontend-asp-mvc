@@ -34,6 +34,32 @@
         firstName: '@Model.Name',
         lastname: '@Model.Last',
     };
+
+    var target = new EventTarget();
+    function handleEvent(event) {
+        alert(window.appContext.comment);
+
+        console.log('Model.Name');
+        console.log('@Model.Name');
+
+        @Model.Name = window.appContext.comment;
+        
+        console.log('Model.Name');
+        console.log('@Model.Name');
+    };
+
+    target.addEventListener("foo", handleEvent);
+    setTimeout(function () {
+        const onApp2FormSubmit = document.getElementById("onApp2FormSubmit");
+        onApp2FormSubmit.addEventListener("click", handleEvent, false);
+    }, 2000);
+
+    console.log('window.appcationContext');
+    console.log(window.appcationContext);
+
+    //target.fire({ type: "foo" });    //can also do target.fire("foo")
+    //target.removeListener("foo", handleEvent);
+
 </script>
     
 <style>

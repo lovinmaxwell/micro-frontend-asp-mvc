@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClient} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppContextService } from './app-context.service';
 import { App1Component } from './app1/app1.component';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -12,9 +14,11 @@ import {FormsModule} from '@angular/forms';
   ],
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
     ],
-  providers: [AppContextService],
+  providers: [AppContextService, Window ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

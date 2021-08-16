@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import {AppContextService} from './app-context.service';
 @Component({
   selector: 'app-2-root',
@@ -8,7 +9,18 @@ import {AppContextService} from './app-context.service';
 export class AppComponent {
   title = 'Angular 2';
 
-  constructor(private appContext: AppContextService) {
+  messages: any[] = [];
+  subscription: Subscription;
+
+  constructor(public appContext: AppContextService) {
+  //   this.subscription = this.appContext.onMessage().subscribe(message => {
+  //     if (message) {
+  //         this.messages.push(message);
+  //     } else {
+  //         // clear messages when empty message received
+  //         this.messages = [];
+  //     }
+  // });
   }
 
   onSubmit($event: any): void {
@@ -21,5 +33,14 @@ export class AppComponent {
     console.log(this.appContext);
     console.log('***** After Update ***********');
     console.log(window);
+  }
+
+  sendMessage(): void {
+    // send message to subscribers via observable subject
+    this.appContext.sendMessage('Message from Home Component to App Component!');
+  }
+  clearMessages(): void {
+    // clear messages
+    this.appContext.clearMessages();
   }
 }
