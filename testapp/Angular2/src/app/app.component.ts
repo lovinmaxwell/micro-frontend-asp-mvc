@@ -1,3 +1,4 @@
+import { NgZone } from '@angular/core';
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {AppContextService} from './app-context.service';
@@ -12,7 +13,7 @@ export class AppComponent {
   messages: any[] = [];
   subscription: Subscription;
 
-  constructor(public appContext: AppContextService) {
+  constructor(public appContext: AppContextService,private zone: NgZone) {
   //   this.subscription = this.appContext.onMessage().subscribe(message => {
   //     if (message) {
   //         this.messages.push(message);
@@ -36,11 +37,15 @@ export class AppComponent {
   }
 
   sendMessage(): void {
+    // this.zone.run(() => {
     // send message to subscribers via observable subject
-    this.appContext.sendMessage('Message from Home Component to App Component!');
+      this.appContext.sendMessage('Message app 2 from Home Component to App Component!');
+    // });
   }
   clearMessages(): void {
     // clear messages
+    // this.zone.run(() => {
     this.appContext.clearMessages();
+    // });
   }
 }

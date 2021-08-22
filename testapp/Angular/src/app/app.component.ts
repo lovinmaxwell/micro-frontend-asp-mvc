@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnInit} from '@angular/core';
+import {Component, Input, ElementRef, OnInit, NgZone, ChangeDetectorRef} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AppContextService } from './app-context.service';
 
@@ -22,23 +22,29 @@ export class AppComponent implements OnInit{
   messages: any[] = [{text: "Mgs 1"}];
   subscription: Subscription;
 
-  constructor(private appContext: AppContextService) {
+  constructor(private appContext: AppContextService,private zone: NgZone, private ref: ChangeDetectorRef) {
     this.appContext.consolMethod('app 1 constructor');
     // subscribe to home component messages
-    this.subscription = this.appContext.onMessage().subscribe(message => {
-      console.log('@subscription')
-      console.log(message)
-      console.log("*****message****")
-      if (message) {
-          console.log('is true message')
-          console.log(message)
-          this.messages.push(message);
-          console.log(this.messages);
-      } else {
-          // clear messages when empty message received
-          this.messages = [];
-      }
-    });
+    // this.zone.run(() => {
+      
+      this.subscription = this.appContext.onMessage().subscribe(message => {
+        console.log('@subscription')
+        console.log(message);
+        // alert(message);
+        console.log("*****message****")
+        if (message) {
+            console.log('is true message')
+            console.log(message)
+            this.messages.push(message);
+            this.ref.detectChanges();
+            console.log(this.messages);
+        } else {
+            // clear messages when empty message received
+            this.messages = [];
+            this.ref.detectChanges();
+        }
+      });
+  // });
     
     // this.appContext.consolMethod();
     // this.getStatus();
@@ -70,12 +76,12 @@ export class AppComponent implements OnInit{
     )
   }
 
-  sendMessage(): void {
-    // send message to subscribers via observable subject
-    this.appContext.sendMessage('Message from Home Component to App Component!');
-  }
-  clearMessages(): void {
-    // clear messages
-    this.appContext.clearMessages();
-  }
+  // sendMessage(): void {
+  //   // send message to subscribers via observable subject
+  //   this.appContext.sendMessage('Message from Home Component to App Component!');
+  // }
+  // clearMessages(): void {
+  //   // clear messages
+  //   this.appContext.clearMessages();
+  // }
 }

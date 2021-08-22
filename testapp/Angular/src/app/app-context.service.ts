@@ -90,13 +90,13 @@ export class AppContextService {
   // onMessage(): Observable<any> {
   //     return this.dataSubject.asObservable();
   // }
-    sendMessage(message: string) {
-        this.windowsRef.AppContextOneSub.next({ text: message });
-    }
+    // sendMessage(message: string) {
+    //     this.windowsRef.AppContextOneSub.next({ text: message });
+    // }
 
-    clearMessages() {
-        this.windowsRef.AppContextOneSub.next();
-    }
+    // clearMessages() {
+    //     this.windowsRef.AppContextOneSub.next();
+    // }
 
     // onMessage(): Observable<any> {
     //     this.windowsRef.AppContextOnefun('app 2 sendMessage');
